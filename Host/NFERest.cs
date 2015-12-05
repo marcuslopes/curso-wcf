@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
 using Modelo.Contratos;
@@ -15,6 +16,9 @@ namespace Host
             throw new NotImplementedException();
         }
 
+
+        [WebInvoke(Method = "GET", UriTemplate =  "NFE/{numeroRota}",
+            ResponseFormat = WebMessageFormat.Json)]
         public ResponseNFE NfeAssinada(int numeroNota)
         {
             return new ResponseNFE()
@@ -26,5 +30,7 @@ namespace Host
                 RazaoSocial = "PTs Association"
 //            };
         }
+
+
     }
 }
