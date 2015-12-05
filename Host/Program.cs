@@ -14,7 +14,7 @@ namespace Host
         static void Main(string[] args)
         {
             CriarHost();
-            Console.WriteLine();
+            Console.ReadLine();
         }
 
         private static void CriarHost()
@@ -38,6 +38,8 @@ namespace Host
             };
 
             host.Description.Behaviors.Add(smb);
+
+            host.Open();
 
         }
     }
