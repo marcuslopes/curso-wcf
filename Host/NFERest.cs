@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.ServiceModel;
 using System.ServiceModel.Web;
 using System.Text;
 using System.Threading.Tasks;
@@ -9,7 +10,7 @@ using Modelo.Modelos.NFE;
 
 namespace Host
 {
-    public class NFERest : INFE
+    public class NFERest : INFERNO
     {
         public void EnviarNFE(RequestNFE request)
         {
@@ -17,9 +18,9 @@ namespace Host
         }
 
 
-        [WebInvoke(Method = "GET", UriTemplate =  "NFE/{numeroRota}",
+        [WebInvoke(Method = "GET", UriTemplate =  "nota/{numeroNota}",
             ResponseFormat = WebMessageFormat.Json)]
-        public ResponseNFE NfeAssinada(int numeroNota)
+        public ResponseNFE NfeAssinada(string numeroNota)
         {
             return new ResponseNFE()
             {
@@ -28,9 +29,16 @@ namespace Host
                 ISS = 6.5m,
                 Valor = 1000,
                 RazaoSocial = "PTs Association"
-//            };
+           };
         }
 
 
+    }
+
+    [ServiceContract]
+    public interface INFERNO
+    {
+        [OperationContract]
+        ResponseNFE NfeAssinada(string numeroNota);
     }
 }

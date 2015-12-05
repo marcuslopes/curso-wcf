@@ -24,7 +24,7 @@ namespace Host
                 ISS = 6.5m,
                 Valor = 1000,
                 RazaoSocial = "PTs Association"
-//            };
+            };
         }
     }
 }
